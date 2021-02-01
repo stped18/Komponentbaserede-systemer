@@ -1,1 +1,1 @@
-# Komponentbaserede-systemer
+# SB4-KOM-F20
