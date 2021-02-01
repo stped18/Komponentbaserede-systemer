@@ -6,7 +6,7 @@
 package dk.sdu.mmmi.cbse.gamestates;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dk.sdu.mmmi.cbse.entities.Enimy;
+import dk.sdu.mmmi.cbse.entities.Enemy;
 import dk.sdu.mmmi.cbse.managers.GameStateManager;
 import java.util.Random;
 
@@ -18,7 +18,7 @@ public class EnemyState extends GameState {
 
     private ShapeRenderer sr;
 
-    private Enimy enimys;
+    private Enemy enemy;
 
     public EnemyState(GameStateManager gsm) {
         super(gsm);
@@ -27,18 +27,18 @@ public class EnemyState extends GameState {
     public void init() {
 
         sr = new ShapeRenderer();
-        enimys = new Enimy();
+        enemy = new Enemy();
 
     }
 
     public void update(float dt) {
         handleInput();
-        enimys.update(dt);
+        enemy.update(dt);
 
     }
 
     public void draw() {
-        enimys.draw(sr);
+        enemy.draw(sr);
     }
 
     public void handleInput() {
@@ -48,19 +48,19 @@ public class EnemyState extends GameState {
 
         int action = rn.nextInt(max - min + 1) + min;
         if (action ==5 || action==1) {
-            enimys.setLeft(true);
-            enimys.setRight(false);
-            enimys.setUp(false);
+            enemy.setLeft(true);
+            enemy.setRight(false);
+            enemy.setUp(false);
         }
         if (action == 3 || action ==7) {
-            enimys.setLeft(false);
-            enimys.setRight(true);
-            enimys.setUp(false);
+            enemy.setLeft(false);
+            enemy.setRight(true);
+            enemy.setUp(false);
         }
         if (action%2==0) {
-            enimys.setLeft(false);
-            enimys.setRight(false);
-            enimys.setUp(true);
+            enemy.setLeft(false);
+            enemy.setRight(false);
+            enemy.setUp(true);
 
         }
 

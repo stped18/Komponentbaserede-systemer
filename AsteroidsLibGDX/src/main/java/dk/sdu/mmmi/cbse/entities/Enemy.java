@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author Steffen Vitten
  */
-public class Enimy extends SpaceObject{
+public class Enemy extends SpaceObject{
     	
 	private boolean left;
 	private boolean right;
@@ -24,7 +24,7 @@ public class Enimy extends SpaceObject{
 	private float acceleration;
 	private float deceleration;
 	
-	public Enimy() {
+	public Enemy() {
 		Random rn = new Random();
                 int ymin =0;
                 int xmin=0;

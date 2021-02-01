@@ -1,7 +1,7 @@
 package dk.sdu.mmmi.cbse.gamestates;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dk.sdu.mmmi.cbse.entities.Enimy;
+import dk.sdu.mmmi.cbse.entities.Enemy;
 import dk.sdu.mmmi.cbse.entities.Player;
 import dk.sdu.mmmi.cbse.managers.GameKeys;
 import dk.sdu.mmmi.cbse.managers.GameStateManager;
