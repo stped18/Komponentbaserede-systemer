@@ -1,9 +1,11 @@
 package dk.sdu.mmmi.cbse.gamestates;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import dk.sdu.mmmi.cbse.entities.Enimy;
 import dk.sdu.mmmi.cbse.entities.Player;
 import dk.sdu.mmmi.cbse.managers.GameKeys;
 import dk.sdu.mmmi.cbse.managers.GameStateManager;
+import java.util.ArrayList;
 
 public class PlayState extends GameState {
 	
@@ -20,6 +22,9 @@ public class PlayState extends GameState {
 		sr = new ShapeRenderer();
 		
 		player = new Player();
+
+        
+                
 		
 	}
 	
@@ -33,6 +38,7 @@ public class PlayState extends GameState {
 	
 	public void draw() {
 		player.draw(sr);
+
 	}
 	
 	public void handleInput() {
