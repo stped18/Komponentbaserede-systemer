@@ -1,13 +1,17 @@
 package dk.sdu.mmmi.cbse.managers;
 
+import dk.sdu.mmmi.cbse.gamestates.AstroidState;
 import dk.sdu.mmmi.cbse.gamestates.EnemyState;
 import dk.sdu.mmmi.cbse.gamestates.GameState;
 import dk.sdu.mmmi.cbse.gamestates.PlayState;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class GameStateManager {
 
     // current game state
-    private GameState[] gameState = new GameState[10];
+    private List<GameState> gameState = new ArrayList<>();
 
     public static final int MENU = 0;
     public static final int PLAY = 893746;
@@ -29,22 +33,23 @@ public class GameStateManager {
             // gameState = new MenuState(this);
         }
         if (state == PLAY) {
-            for (int i = 0; i < gameState.length; i++) {
-                if (i == 0) {
-                    gameState[i] = new PlayState(this);
-                } else {
-                    gameState[i] = new EnemyState(this);
-
-                }
-
-            }
+            for (GameState gs : gameState)
+            gameState.add(new PlayState(this));
+            gameState.add(new EnemyState(this));
+            
+                
+               
+            
 
         }
+    }
+    public void add_state(GameState gameobject){
+        gameState.add(gameobject);
     }
 
     public void update(float dt) {
         for (GameState gameState1 : gameState) {
-            gameState1.update(dt);
+                gameState1.update(dt);
 
         }
 

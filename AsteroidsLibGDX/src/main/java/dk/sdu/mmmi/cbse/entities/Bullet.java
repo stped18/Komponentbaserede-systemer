@@ -1,24 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dk.sdu.mmmi.cbse.entities;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import dk.sdu.mmmi.cbse.main.Game;
 
-public class Player extends SpaceObject {
-	
-	private boolean left;
-	private boolean right;
+/**
+ *
+ * @author steff
+ */
+public class Bullet extends SpaceObject{
+    
+private boolean left;
 	private boolean up;
-        private boolean shoot;
-        private Bullet bullet;
-           
 	
 	private float maxSpeed;
 	private float acceleration;
 	private float deceleration;
 	
-	public Player() {
+	public Bullet() {
 		
 		x = Game.WIDTH / 2;
 		y = Game.HEIGHT / 2;
@@ -50,29 +54,14 @@ public class Player extends SpaceObject {
 	}
 	
 	public void setLeft(boolean b) { left = b; }
-	public void setRight(boolean b) { right = b; }
 	public void setUp(boolean b) { up = b; }
-        public void setShoot(boolean b){shoot=b;}
 	
 	public void update(float dt) {
 		
-		// turning
-		if(left) {
-			radians += rotationSpeed * dt;
-		}
-		else if(right) {
-			radians -= rotationSpeed * dt;
-		}
-                if(shoot){
-                    
-                }
-		
-		// accelerating
 		if(up) {
 			dx += MathUtils.cos(radians) * acceleration * dt;
 			dy += MathUtils.sin(radians) * acceleration * dt;
 		}
-               
 		
 		// deceleration
 		float vec = (float) Math.sqrt(dx * dx + dy * dy);
@@ -101,7 +90,7 @@ public class Player extends SpaceObject {
 		
 		sr.setColor(1, 1, 1, 1);
 		
-		sr.begin(ShapeType.Line);
+		sr.begin(ShapeRenderer.ShapeType.Line);
 		
 		for(int i = 0, j = shapex.length - 1;
 			i < shapex.length;
@@ -116,21 +105,3 @@ public class Player extends SpaceObject {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
