@@ -3,6 +3,7 @@ package dk.sdu.mmmi.cbse.entities;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
+import dk.sdu.mmmi.cbse.gamestates.BulletState;
 import dk.sdu.mmmi.cbse.main.Game;
 
 public class Player extends SpaceObject {
