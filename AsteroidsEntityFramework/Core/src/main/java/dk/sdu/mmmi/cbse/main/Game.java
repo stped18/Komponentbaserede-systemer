@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import dk.sdu.mmmi.cbse.bullet.Bullet;
 import dk.sdu.mmmi.cbse.bullet.BulletControllSystem;
 import dk.sdu.mmmi.cbse.bullet.BulletPlugin;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -12,9 +13,11 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.enemy2.Enemy;
 import dk.sdu.mmmi.cbse.enemy2.EnemyControleSystem;
 import dk.sdu.mmmi.cbse.enemy2.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
+import dk.sdu.mmmi.cbse.playersystem.Player;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import java.util.ArrayList;
@@ -90,12 +93,22 @@ public class Game
         for (IEntityProcessingService entityProcessorService : entityProcessors) {
             entityProcessorService.process(gameData, world);
         }
+        
     }
 
     private void draw() {
         for (Entity entity : world.getEntities()) {
-
-            sr.setColor(1, 1, 1, 1);
+            if (entity.getClass().equals(Player.class)){
+                sr.setColor(0, 0, 255, 1);
+            }
+            if (entity.getClass().equals(Enemy.class)){
+                sr.setColor(255, 0, 0, 1);
+            }
+            if (entity.getClass().equals(Bullet.class)){
+                sr.setColor(255, 180, 0, 1);
+            }
+            
+            
 
             sr.begin(ShapeRenderer.ShapeType.Line);
 
@@ -111,6 +124,7 @@ public class Game
 
             sr.end();
         }
+       
     }
 
     @Override

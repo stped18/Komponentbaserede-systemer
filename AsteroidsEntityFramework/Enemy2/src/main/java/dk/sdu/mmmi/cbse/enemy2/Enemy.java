@@ -13,9 +13,6 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
  */
 public class Enemy extends Entity{
 
-    public Enemy(TYPS type) {
-        super(type);
-    }
-    
-    
+    private static final long serialVersionUID = 1L;
+
 }

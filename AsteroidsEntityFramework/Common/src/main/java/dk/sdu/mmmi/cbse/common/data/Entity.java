@@ -8,20 +8,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Entity implements Serializable {
     private final UUID ID = UUID.randomUUID();
-    public enum TYPS{PLAYER, ENEMY, BULLET}
-    private final TYPS type;
+
     private float[] shapeX = new float[4];
     private float[] shapeY = new float[4];
     private float radius;
     private Map<Class, EntityPart> parts;
     
-    public Entity(TYPS type) {
-        this.type=type;
+    public Entity() {
         parts = new ConcurrentHashMap<>();
     }
-    public TYPS getType(){
-        return this.type;
-    }
+
     
     public void add(EntityPart part) {
         parts.put(part.getClass(), part);

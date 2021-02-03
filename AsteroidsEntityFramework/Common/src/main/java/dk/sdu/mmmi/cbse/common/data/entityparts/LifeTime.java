@@ -7,35 +7,29 @@ package dk.sdu.mmmi.cbse.common.data.entityparts;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
-import dk.sdu.mmmi.cbse.common.events.Event;
-
 
 /**
  *
- * @author Steffen Vitten
+ * @author steff
  */
-public class ShootingPart implements EntityPart{
+public class LifeTime implements EntityPart{
     
-    private boolean isShooting=false;
+    int time;
+
+    public LifeTime(int time ) {
+       this.time=time;
+    }
+
+    public int getTime() {
+        return time;
+    }
     
-
-    public ShootingPart() {
-    }
-
-    public boolean isIsShooting() {
-        return isShooting;
-    }
-
-    public void setIsShooting(boolean isShooting) {
-        this.isShooting = isShooting;
-    }
-
+    
     
     @Override
     public void process(GameData gameData, Entity entity) {
-            gameData.addEvent(new Event(entity));
-        
-        
+        this.time -=1;
     }
+    
     
 }

@@ -12,9 +12,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
  * @author Steffen Vitten
  */
 public class Bullet extends Entity{
-
-    public Bullet(TYPS type) {
-        super(type);
-    }
-    
+   
+    private static final long serialVersionUID = 1L;
+   
 }
