@@ -7,9 +7,7 @@ package dk.sdu.mmmi.cbse.gamestates;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dk.sdu.mmmi.cbse.entities.Bullet;
-import dk.sdu.mmmi.cbse.entities.Enemy;
 import dk.sdu.mmmi.cbse.managers.GameStateManager;
-import java.util.Random;
 
 /**
  *
@@ -29,7 +27,6 @@ public class BulletState  extends GameState{
 
         sr = new ShapeRenderer();
         bullet = new Bullet();
-        gsm.add_state(this);
         
 
     }

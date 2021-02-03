@@ -15,7 +15,6 @@ import dk.sdu.mmmi.cbse.main.Game;
  */
 public class Bullet extends SpaceObject{
     
-private boolean left;
 	private boolean up;
 	
 	private float maxSpeed;
@@ -53,7 +52,6 @@ private boolean left;
 		shapey[3] = y + MathUtils.sin(radians + 4 * 3.1415f / 5) * 8;
 	}
 	
-	public void setLeft(boolean b) { left = b; }
 	public void setUp(boolean b) { up = b; }
 	
 	public void update(float dt) {

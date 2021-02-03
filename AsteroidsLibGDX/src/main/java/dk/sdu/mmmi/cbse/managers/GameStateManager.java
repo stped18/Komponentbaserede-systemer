@@ -5,7 +5,6 @@ import dk.sdu.mmmi.cbse.gamestates.EnemyState;
 import dk.sdu.mmmi.cbse.gamestates.GameState;
 import dk.sdu.mmmi.cbse.gamestates.PlayState;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class GameStateManager {
@@ -33,9 +32,11 @@ public class GameStateManager {
             // gameState = new MenuState(this);
         }
         if (state == PLAY) {
-            for (GameState gs : gameState)
+            
             gameState.add(new PlayState(this));
             gameState.add(new EnemyState(this));
+            gameState.add(new AstroidState(this));
+            
             
                 
                

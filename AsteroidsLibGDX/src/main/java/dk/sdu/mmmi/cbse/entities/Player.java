@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import dk.sdu.mmmi.cbse.gamestates.BulletState;
 import dk.sdu.mmmi.cbse.main.Game;
+import dk.sdu.mmmi.cbse.managers.GameStateManager;
 
 public class Player extends SpaceObject {
 	
@@ -12,15 +13,16 @@ public class Player extends SpaceObject {
 	private boolean right;
 	private boolean up;
         private boolean shoot;
-        private Bullet bullet;
+        private static GameStateManager gsm;
+        
            
 	
 	private float maxSpeed;
 	private float acceleration;
 	private float deceleration;
 	
-	public Player() {
-		
+	public Player(GameStateManager gms) {
+		this.gsm=gms;
 		x = Game.WIDTH / 2;
 		y = Game.HEIGHT / 2;
 		
@@ -54,6 +56,12 @@ public class Player extends SpaceObject {
 	public void setRight(boolean b) { right = b; }
 	public void setUp(boolean b) { up = b; }
         public void setShoot(boolean b){shoot=b;}
+        private void Shooting(){
+           
+            
+            this.gsm.add_state(new BulletState(this.gsm));
+            
+        }
 	
 	public void update(float dt) {
 		
@@ -65,7 +73,7 @@ public class Player extends SpaceObject {
 			radians -= rotationSpeed * dt;
 		}
                 if(shoot){
-                    
+                    Shooting();
                 }
 		
 		// accelerating
