@@ -1,47 +1,31 @@
-package dk.sdu.mmmi.cbse.playersystem;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dk.sdu.mmmi.cbse.bullet;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
-import dk.sdu.mmmi.cbse.common.data.GameKeys;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
-import dk.sdu.mmmi.cbse.common.data.entityparts.ShootingPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.sqrt;
 
 /**
  *
- * @author jcs
+ * @author steff
  */
-public class PlayerControlSystem implements IEntityProcessingService {
+public class BulletControllSystem implements IEntityProcessingService{
 
     @Override
     public void process(GameData gameData, World world) {
-
-        for (Entity player : world.getEntities(Player.class)) {
-            PositionPart positionPart = player.getPart(PositionPart.class);
-            MovingPart movingPart = player.getPart(MovingPart.class);
-            ShootingPart shootingPart=player.getPart(ShootingPart.class);
-
-            movingPart.setLeft(gameData.getKeys().isDown(LEFT));
-            movingPart.setRight(gameData.getKeys().isDown(RIGHT));
-            movingPart.setUp(gameData.getKeys().isDown(UP));
-            shootingPart.setIsShooting(gameData.getKeys().isPressed(GameKeys.SPACE));
-            
-            
-            movingPart.process(gameData, player);
-            positionPart.process(gameData, player);
-
-            updateShape(player);
+         for (Entity bullet : world.getEntities(Bullet.class)) {
+            MovingPart movingPart = bullet.getPart(MovingPart.class);
+            movingPart.setUp(true);
+            updateShape(bullet);
         }
     }
-
     private void updateShape(Entity entity) {
         float[] shapex = entity.getShapeX();
         float[] shapey = entity.getShapeY();
@@ -65,5 +49,5 @@ public class PlayerControlSystem implements IEntityProcessingService {
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
     }
-
+    
 }

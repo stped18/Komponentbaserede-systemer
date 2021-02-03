@@ -5,10 +5,16 @@
  */
 package dk.sdu.mmmi.cbse.bullet;
 
+import dk.sdu.mmmi.cbse.common.data.Entity;
+
 /**
  *
  * @author Steffen Vitten
  */
-public class Bullet {
+public class Bullet extends Entity{
+
+    public Bullet(TYPS type) {
+        super(type);
+    }
     
 }
